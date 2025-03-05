@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>マンダラチャート</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h1>マンダラチャート</h1>
+
+    <div class="mode-switch">
+      <span class="mode-label">モード：</span>
+      <button id="modeToggle" class="button" onclick="toggleMode()">
+        目標記入モード
+      </button>
+    </div>
+
+    <div class="mandala-container" id="mandalaChart"></div>
+
+    <div class="button-container">
+      <button class="button" onclick="saveMandala()">保存</button>
+      <input
+        type="file"
+        id="fileInput"
+        class="file-input"
+        accept=".json"
+        onchange="loadMandala(event)"
+      />
+      <label for="fileInput" class="button">ファイルを開く</label>
+      <button class="button button-warning" onclick="clearLocalStorage()">
+        データをリセット
+      </button>
+    </div>
+
+    <div class="auto-save-notice">
+      <p>※ 入力内容は自動的にブラウザに保存されます</p>
+    </div>
+
+    <script src="js/mandala.js"></script>
+  </body>
+</html>

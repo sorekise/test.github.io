@@ -1,0 +1,207 @@
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.mode-switch {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.mode-label {
+  font-size: 16px;
+  color: #555;
+}
+
+.mandala-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mandala-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cell-container {
+  position: relative;
+}
+
+.mandala-cell {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid #ddd;
+  padding: 5px;
+  text-align: center;
+  font-size: 14px;
+  resize: none;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.mandala-cell:focus {
+  outline: 2px solid #4caf50;
+  border-color: #4caf50;
+}
+
+/* 中央のメインセル */
+.center-main-cell {
+  background-color: #fff;
+  font-weight: bold;
+}
+
+/* 中央セクションの周囲8マス */
+.center-section-cell {
+  background-color: #fff8e1; /* 薄い黄色 */
+}
+
+/* 各セクションの中央セル */
+.sub-center-cell {
+  background-color: #fff8e1; /* 薄い黄色 */
+  font-weight: bold;
+}
+
+/* 入力不可のセルのスタイル */
+textarea[readonly] {
+  background-color: #fff8e1;
+  cursor: default;
+}
+
+/* 採点モード */
+.scoring-mode .mandala-cell {
+  pointer-events: none;
+}
+
+.scoring-mode .cell-container {
+  cursor: pointer;
+}
+
+.scoring-mode .cell-container.status-none .mandala-cell {
+  background-color: #fff;
+}
+
+.scoring-mode .cell-container.status-done .mandala-cell {
+  background-color: #c8e6c9;
+}
+
+.scoring-mode .cell-container.status-done::after {
+  content: '○';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: #2e7d32;
+  pointer-events: none;
+}
+
+.scoring-mode .cell-container.status-failed .mandala-cell {
+  background-color: #ffcdd2;
+}
+
+.scoring-mode .cell-container.status-failed::after {
+  content: '✗';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  color: #c62828;
+  pointer-events: none;
+}
+
+/* ステータスクラス（コンテナ用） */
+.status-none {
+  background-color: transparent;
+}
+
+.status-done {
+  background-color: transparent;
+}
+
+.status-failed {
+  background-color: transparent;
+}
+
+.button-container {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.button-warning {
+  background-color: #f44336;
+}
+
+.button-warning:hover {
+  background-color: #d32f2f;
+}
+
+.file-input {
+  display: none;
+}
+
+.auto-save-notice {
+  margin-top: 20px;
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .mandala-container {
+    max-width: 100%;
+    gap: 5px;
+  }
+
+  .mandala-section {
+    padding: 5px;
+  }
+
+  .mandala-cell {
+    font-size: 12px;
+    padding: 3px;
+  }
+
+  .button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
